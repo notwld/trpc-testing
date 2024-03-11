@@ -10,6 +10,9 @@ export const tasks = router({
         })
     )
     .query(async ({ctx,input}) =>{
-        console.log("its working")
+        return {
+            name: input.name,
+            description: input.description,
+        }
     })
 })
