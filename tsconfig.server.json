@@ -1,0 +1,13 @@
+// this file is used to configure the server-side TypeScript compiler
+
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "module": "CommonJS",
+      "outDir": "dist",
+      "noEmit": false,
+      "jsx": "react"
+    },
+    "include": ["src/server/server.ts"]
+  }
+  

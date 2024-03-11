@@ -1,0 +1,6 @@
+{
+  "watch": ["server.ts", "src/trpc/index.js"],
+  "exec": "pnpm exec ts-node --project tsconfig.server.json src/server/server.ts -- -I",
+  "ext": "js ts",
+  "stdin": false
+}
