@@ -2,6 +2,7 @@ import next from "next"
 import * as trpcExpress from "@trpc/server/adapters/express"
 import express from "express"
 import { inferAsyncReturnType } from "@trpc/server"
+import { appRouter } from "./trpc/index"
 
 const PORT = Number(process.env.PORT) || 3000
 
@@ -28,7 +29,13 @@ export const createContext = async ({
 export type Context = inferAsyncReturnType<typeof createContext>
 
 const init = async () => {
-
+    app.use(
+        "/api/trpc",
+        trpcExpress.createExpressMiddleware({
+          router: appRouter,
+          createContext,
+        })
+      )
     app.use((req, res) => nextHandler(req, res))
     await nextApp.prepare()
         .then(() => {
